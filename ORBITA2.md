@@ -4,21 +4,21 @@
 
 | Qué | Enlace |
 |---|---|
-| Archivo de Figma (versión "Entrega Órbita 2") | |
-| Prototipo (enlace que empieza por `figma.com/proto/`) | |
-| Proyecto de Google Stitch (solo si lo has usado) | |
+| Archivo de Figma (versión "Entrega Órbita 2") | [Enlace](https://www.figma.com/design/esyQogkhfjix5dZU9Xqcto/Mockup?node-id=0-1&p=f&t=Q6bkZPZ7apo6Dlk3-0) |
+| Prototipo (enlace que empieza por `figma.com/proto/`) | [Enlace](https://www.figma.com/design/esyQogkhfjix5dZU9Xqcto/Mockup?node-id=0-1&t=Q6bkZPZ7apo6Dlk3-1) |
+| Proyecto de Google Stitch (solo si lo has usado) | [Enlace](https://stitch.withgoogle.com/projects/9087621598945268063) |
 
 ## Dónde está cada cosa en Figma
 
 | Entregable | Página y sección del archivo |
 |---|---|
 | Inventario de decisiones | |
-| Wireframes rediseñados con sus notas | |
-| Componentes | |
-| Mockups del happy path | |
-| Pantalla principal en el segundo ancho | |
-| Pantallas en modo oscuro | |
-| Guía de estilo | |
+| Wireframes rediseñados con sus notas | [Enlace](https://stitch.withgoogle.com/projects/9087621598945268063) |
+| Componentes | [Enlace](https://www.figma.com/design/esyQogkhfjix5dZU9Xqcto/Mockup?node-id=31-250) |
+| Mockups del happy path | [Enlace](https://www.figma.com/design/esyQogkhfjix5dZU9Xqcto/Mockup?node-id=0-1&p=f&t=Q6bkZPZ7apo6Dlk3-0) |
+| Pantalla principal en el segundo ancho |  |
+| Pantallas en modo oscuro | En el MockUp del escritorio y del móvil (adjunto el del [modo escritorio](https://www.figma.com/design/esyQogkhfjix5dZU9Xqcto/Mockup?node-id=0-1) ) |
+| Guía de estilo | [Enlace](https://www.figma.com/design/esyQogkhfjix5dZU9Xqcto/Mockup?node-id=185-2394) |
 
 ## Lista de comprobación de Figma
 
