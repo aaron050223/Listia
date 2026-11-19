@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja - Gestión</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <img src="../../assets/logo.svg" alt="Logo" class="sidebar-logo">
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Menú Principal</a>
+            <a href="stock.html" class="nav-link">Stock</a>
+            <a href="pedidos.html" class="nav-link">Pedidos</a>
+            <a href="caja.html" class="nav-link active">Caja</a>
+            <a href="perfil.html" class="nav-link">Perfil de usuario</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Caja</h1>
+            <p class="date-info" id="fecha-jornada">Jornada de hoy • 23 de julio</p>
+        </header>
+
+        <section class="form-card">
+            <h2 id="fecha-caja-hoy">23/07/2026</h2>
+            <form id="form-caja">
+                <input type="number" step="0.01" id="input-tarjeta" class="input-field" placeholder="Pago en tarjeta..."
+                    required>
+                <input type="number" step="0.01" id="input-efectivo" class="input-field"
+                    placeholder="Pago en efectivo..." required>
+                <input type="number" step="0.01" id="input-gastos" class="input-field" placeholder="Gastos menores..."
+                    required>
+                <button type="submit" class="btn-primary">Continuar ▷</button>
+            </form>
+        </section>
+
+        <h3 class="section-divider-title">Días anteriores</h3>
+
+        <section id="historial-caja">
+            <article class="form-card">
+                <h2>22/07/2026</h2>
+                <ul class="history-list">
+                    <li class="history-row">450,00 €</li>
+                    <li class="history-row">280,00 €</li>
+                    <li class="history-row">15,00 €</li>
+                    <li class="history-row total">715,00 €</li>
+                </ul>
+            </article>
+
+            <article class="form-card">
+                <h2>21/07/2026</h2>
+                <ul class="history-list">
+                    <li class="history-row">520,00 €</li>
+                    <li class="history-row">230,00 €</li>
+                    <li class="history-row">25,00 €</li>
+                    <li class="history-row total">725,00 €</li>
+                </ul>
+            </article>
+
+            <article class="form-card">
+                <h2>20/07/2026</h2>
+                <ul class="history-list">
+                    <li class="history-row">600,00 €</li>
+                    <li class="history-row">250,00 €</li>
+                    <li class="history-row">20,00 €</li>
+                    <li class="history-row total">830,00 €</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

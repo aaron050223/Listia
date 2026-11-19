@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Gestión</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <img src="../../assets/logo.svg" alt="Logo" class="sidebar-logo">
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link active">Menú Principal</a>
+            <a href="stock.html" class="nav-link">Stock</a>
+            <a href="pedidos.html" class="nav-link">Pedidos</a>
+            <a href="caja.html" class="nav-link">Caja</a>
+            <a href="perfil.html" class="nav-link">Perfil de usuario</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="page-header">
+            <p class="subtitle-top">¡Bienvenido de nuevo!</p>
+            <h1>Menú Principal</h1>
+            <p class="date-info" id="fecha-jornada">Jornada de hoy • 23 de julio</p>
+        </header>
+
+        <section class="income-summary">
+            <p>Ingresos del mes • <span id="mes-actual">Julio</span></p>
+            <p><strong class="income-amount" id="ingresos-mes">12.501 €</strong> &nbsp; <span id="comparativa-mes">+8.4%
+                    más que el mes anterior</span></p>
+            <p id="objetivo-mes">Objetivo mensual alcanzado en un 78% (16.000 €)</p>
+        </section>
+
+        <section class="kpi-grid">
+            <article class="kpi-card">
+                <h3>Tickets emitidos</h3>
+                <p id="kpi-tickets">1002 ventas</p>
+            </article>
+            <article class="kpi-card">
+                <h3>Ticket medio</h3>
+                <p id="kpi-ticket-medio">12,47 €</p>
+            </article>
+            <article class="kpi-card">
+                <h3>Cobros en efectivo</h3>
+                <p id="kpi-efectivo">3.410 €</p>
+            </article>
+            <article class="kpi-card">
+                <h3>Cobros tarjeta</h3>
+                <p id="kpi-tarjeta">9.091 €</p>
+            </article>
+        </section>
+
+        <section>
+            <p>Pedidos pendientes para hoy: <strong id="pending-count">2</strong></p>
+            <section class="orders-today-grid" id="pedidos-hoy">
+                <article class="order-card">
+                    <h3>Bimbo</h3>
+                    <time>11:30</time>
+                    <span class="status-delivered">Entregado</span>
+                </article>
+
+                <article class="order-card">
+                    <h3>El Pozo</h3>
+                    <time>13:40</time>
+                    <span class="status-pending">Pendiente</span>
+                </article>
+
+                <article class="order-card">
+                    <h3>Alhambra</h3>
+                    <time>14:00</time>
+                    <span class="status-pending">Pendiente</span>
+                </article>
+            </section>
+            <a href="pedidos.html" class="link-action">Ver todos los pedidos</a>
+        </section>
+
+        <section class="quick-access-section">
+            <h2>Accesos rápidos</h2>
+            <article class="alert-card">
+                <h3>Bajo Stock</h3>
+                <p>Tienes <strong id="low-stock-count">2</strong> productos en bajo stock</p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
