@@ -160,3 +160,13 @@ export const pedidos = [
         ]
     }
 ];
+
+export const accesosRapidos = [
+    {
+        id: 1,
+        titulo: 'Bajo Stock',
+        textoAntes: 'Tienes ',
+        cantidad: productos.filter((p) => p.stock < p.stockMinimo).length,
+        textoDespues: ' productos en bajo stock'
+    }
+];
