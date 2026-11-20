@@ -1,12 +1,11 @@
 # Listia
 
-# Orbita 1
+Documentación:
 
-## Enlaces
-- Changelog: [Clic](CHANGELOG.md)
-- Brief: [Clic](BRIEF.md)
+- Ver el **Changelog**: [Click](cliente/CHANGELOG.md)
+- Ver el **Mapa de Plantillas**: [Click](cliente/mapa.md)
 
-## Orbita 2
+Código:
 
-- Changelog: [Clic](CHANGELOG.md)
-- ORBITA2: [Clic](ORBITA2.md)
+- Ver el **HTML**: [Click](src/html)
+- Ver el **JS**: [Click](src/js)
