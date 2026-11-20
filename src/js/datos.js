@@ -167,13 +167,22 @@ export const pedidos = [
         estado: 'Pendiente',
         productos: [
             { nombre: 'Mahou Tostada', cantidad: 7 },
-            { nombre: 'San Miguel S/G', cantidad: 7 },
+            { nombre: 'San Miguel S/G', cantidad: 7 }
+        ]
+    },
+    {
+        id: 5,
+        proveedor: 'Cabreiroá',
+        fecha: '24/07/2026',
+        hora: '11:40',
+        estado: 'Pendiente',
+        productos: [
             { nombre: 'Agua con Gas', cantidad: 6 },
             { nombre: 'Agua', cantidad: 8 }
         ]
     },
     {
-        id: 5,
+        id: 6,
         proveedor: 'Coca-Cola',
         fecha: '25/07/2026',
         hora: '09:45',
@@ -186,7 +195,7 @@ export const pedidos = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         proveedor: 'Matutano',
         fecha: '25/07/2026',
         hora: '11:00',
