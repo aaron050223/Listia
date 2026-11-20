@@ -1,4 +1,4 @@
-import { pedidos, accesosRapidos, productos } from './datos.js';
+import { pedidos, accesosRapidos, historialCaja } from './datos.js';
 
 export const pintarProductosPorCategoria = (categorias, productos) => {
     const contenedor = document.querySelector('.main-content')
@@ -189,24 +189,24 @@ export const mostrarAlertaStock = () => {
 }
 
 export const mostrarPedirPronto = (productos) => {
-    const lista = document.querySelector('#lista-pedir-pronto');
+    const lista = document.querySelector('#lista-pedir-pronto')
     productos.forEach((producto) => {
         if (producto.stock <= producto.stockMinimo) {
-            const productoLi = document.createElement('li');
-            productoLi.classList.add('product-item');
+            const productoLi = document.createElement('li')
+            productoLi.classList.add('product-item')
 
-            const nombreProducto = document.createElement('span');
-            nombreProducto.textContent = producto.nombre;
-            productoLi.appendChild(nombreProducto);
+            const nombreProducto = document.createElement('span')
+            nombreProducto.textContent = producto.nombre
+            productoLi.appendChild(nombreProducto)
 
-            const stockProducto = document.createElement('span');
-            stockProducto.classList.add('product-badge');
-            stockProducto.textContent = producto.stock;
-            productoLi.appendChild(stockProducto);
+            const stockProducto = document.createElement('span')
+            stockProducto.classList.add('product-badge')
+            stockProducto.textContent = producto.stock
+            productoLi.appendChild(stockProducto)
 
-            lista.appendChild(productoLi);
+            lista.appendChild(productoLi)
         }
-    });
+    })
 }
 
 export const mostrarFechasPedidos = () => {
@@ -256,11 +256,44 @@ export const mostrarFechasPedidos = () => {
     }))
 }
 
+export const mostrarCajaDiasAnteriores = () => {
+    const contenedor = document.querySelector('#historial-caja')
+    historialCaja.forEach((dia) => {
+        const carta = document.createElement('article')
+        carta.classList.add('form-card')
+
+        const titulo = document.createElement('h2')
+        titulo.textContent = dia.fecha
+        carta.appendChild(titulo)
+
+        const lista = document.createElement('ul')
+        lista.classList.add('history-list')
+
+        const totalCalculado = dia.tarjeta + dia.efectivo - dia.gastos
+        const valores = [dia.tarjeta, dia.efectivo, dia.gastos, totalCalculado]
+
+        valores.forEach((valor, indice) => {
+            const fila = document.createElement('li')
+            fila.classList.add('history-row')
+
+            if (indice === valores.length - 1) {
+                fila.classList.add('total')
+            }
+
+            fila.textContent = `${valor.toFixed(2)} €`
+            lista.appendChild(fila);
+        });
+
+        carta.appendChild(lista)
+        contenedor.appendChild(carta)
+    })
+}
+
 export const listenerPedido = () => {
     const pedidos = document.querySelector('#pedidos-hoy')
     pedidos.addEventListener('click', e => {
         const pedidoTitulo = e.target.closest('.order-card')
         const pedidoId = pedidoTitulo.dataset.id;
         mostrarInfoPedido(pedidoId);
-    });
+    })
 }
