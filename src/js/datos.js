@@ -216,4 +216,28 @@ export const accesosRapidos = [
         cantidad: productos.filter((p) => p.stock < p.stockMinimo).length,
         textoDespues: ' productos en bajo stock'
     }
-];
+]
+
+export const historialCaja = [
+    {
+        id: 1,
+        fecha: '22/07/2026',
+        tarjeta: 450,
+        efectivo: 280,
+        gastos: 15
+    },
+    {
+        id: 2,
+        fecha: '21/07/2026',
+        tarjeta: 520,
+        efectivo: 230,
+        gastos: 25
+    },
+    {
+        id: 3,
+        fecha: '20/07/2026',
+        tarjeta: 600,
+        efectivo: 250,
+        gastos: 20
+    }
+]
