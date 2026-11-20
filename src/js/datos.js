@@ -1,7 +1,7 @@
 export const categorias = [
-    {id: 1, nombre: 'Bebida'},
-    {id: 2, nombre: 'Snacks'},
-    {id: 3, nombre: 'Bollería'}
+    { id: 1, nombre: 'Bebida' },
+    { id: 2, nombre: 'Snacks' },
+    { id: 3, nombre: 'Bollería' }
 ];
 
 export const productos = [
@@ -11,7 +11,6 @@ export const productos = [
         categoriaId: 1,
         stock: 9,
         stockMinimo: 3,
-        proveedor: 'Coca-Cola'
     },
     {
         id: 2,
@@ -19,7 +18,6 @@ export const productos = [
         categoriaId: 1,
         stock: 4,
         stockMinimo: 3,
-        proveedor: 'Coca-Cola'
     },
     {
         id: 3,
@@ -27,7 +25,6 @@ export const productos = [
         categoriaId: 1,
         stock: 2,
         stockMinimo: 3,
-        proveedor: 'Coca-Cola'
     },
     {
         id: 4,
@@ -35,7 +32,6 @@ export const productos = [
         categoriaId: 1,
         stock: 7,
         stockMinimo: 3,
-        proveedor: 'Coca-Cola'
     },
     {
         id: 5,
@@ -43,7 +39,6 @@ export const productos = [
         categoriaId: 1,
         stock: 6,
         stockMinimo: 3,
-        proveedor: 'Coca-Cola'
     },
 
     {
@@ -52,7 +47,6 @@ export const productos = [
         categoriaId: 2,
         stock: 2,
         stockMinimo: 3,
-        proveedor: 'Matutano'
     },
     {
         id: 7,
@@ -60,7 +54,6 @@ export const productos = [
         categoriaId: 2,
         stock: 5,
         stockMinimo: 2,
-        proveedor: 'Matutano'
     },
     {
         id: 8,
@@ -68,7 +61,6 @@ export const productos = [
         categoriaId: 2,
         stock: 6,
         stockMinimo: 2,
-        proveedor: 'Matutano'
     },
     {
         id: 9,
@@ -76,7 +68,6 @@ export const productos = [
         categoriaId: 2,
         stock: 8,
         stockMinimo: 3,
-        proveedor: 'Matutano'
     },
     {
         id: 10,
@@ -84,7 +75,6 @@ export const productos = [
         categoriaId: 2,
         stock: 4,
         stockMinimo: 2,
-        proveedor: 'Matutano'
     },
     {
         id: 11,
@@ -92,7 +82,6 @@ export const productos = [
         categoriaId: 2,
         stock: 7,
         stockMinimo: 3,
-        proveedor: 'Matutano'
     },
 
     {
@@ -101,7 +90,6 @@ export const productos = [
         categoriaId: 3,
         stock: 5,
         stockMinimo: 2,
-        proveedor: 'Bimbo'
     },
     {
         id: 13,
@@ -109,7 +97,6 @@ export const productos = [
         categoriaId: 3,
         stock: 2,
         stockMinimo: 3,
-        proveedor: 'Bimbo'
     },
     {
         id: 14,
@@ -117,7 +104,6 @@ export const productos = [
         categoriaId: 3,
         stock: 6,
         stockMinimo: 2,
-        proveedor: 'Bimbo'
     },
     {
         id: 15,
@@ -125,7 +111,6 @@ export const productos = [
         categoriaId: 3,
         stock: 4,
         stockMinimo: 2,
-        proveedor: 'Bimbo'
     },
     {
         id: 16,
@@ -133,6 +118,45 @@ export const productos = [
         categoriaId: 3,
         stock: 5,
         stockMinimo: 2,
-        proveedor: 'Bimbo'
+    }
+];
+
+export const pedidos = [
+    {
+        id: 1,
+        proveedor: 'Bimbo',
+        fecha: '23/07/2026',
+        hora: '11:30',
+        estado: 'Entregado',
+        productos: [
+            { nombre: 'Pan de molde', cantidad: 5 },
+            { nombre: 'Donuts', cantidad: 12 },
+            { nombre: 'Bollycao', cantidad: 10 },
+            { nombre: 'Phoskitos', cantidad: 8 }
+        ]
+    },
+    {
+        id: 2,
+        proveedor: 'El Pozo',
+        fecha: '23/07/2026',
+        hora: '13:40',
+        estado: 'Pendiente',
+        productos: [
+            { nombre: 'Mortadela', cantidad: 9 },
+            { nombre: 'Jamón cocido', cantidad: 8 },
+            { nombre: 'Pechuga de pavo', cantidad: 6 }
+        ]
+    },
+    {
+        id: 3,
+        proveedor: 'Alhambra',
+        fecha: '23/07/2026',
+        hora: '14:00',
+        estado: 'Pendiente',
+        productos: [
+            { nombre: 'Alhambra Especial (tercios)', cantidad: 24 },
+            { nombre: 'Alhambra Reserva 1925', cantidad: 12 },
+            { nombre: 'Alhambra Sin Alcohol', cantidad: 12 }
+        ]
     }
 ];
