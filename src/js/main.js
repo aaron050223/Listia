@@ -1,5 +1,5 @@
 import { categorias, productos } from './datos.js';
-import { pintarProductosPorCategoria, mostrarPedidos, mostrarAlertaStock, listenerPedido, mostrarPedirPronto, mostrarFechasPedidos } from './ui.js';
+import { pintarProductosPorCategoria, mostrarPedidos, mostrarAlertaStock, listenerPedido, mostrarPedirPronto, mostrarFechasPedidos, mostrarCajaDiasAnteriores } from './ui.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // He buscado como hacer que (por ejemplo) las cosas de stock no aparezcan en el index. Esta es la mejor forma que he encontrado
@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (ruta.includes('pedidos.html')) {
         mostrarPedirPronto(productos)
-        mostrarFechasPedidos();
+        mostrarFechasPedidos()
+    }
+
+    if (ruta.includes('caja.html')) {
+        mostrarCajaDiasAnteriores()
     }
 })
