@@ -182,6 +182,7 @@ body {
 }
 
 .order-card {
+    cursor: pointer;
     background-color: var(--bg-card);
     padding: 1.125rem 1.25rem;
     border-radius: 0.75rem;
@@ -343,4 +344,47 @@ body {
     text-align: center;
     margin: 2rem 0 1.25rem 0;
     font-size: 1.3rem;
+}
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(31, 34, 45, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 100;
+}
+
+.popup-overlay.activo {
+    display: flex;
+}
+
+.popup-card {
+    background-color: var(--bg-card);
+    border-radius: 0.875rem;
+    padding: 1.75rem;
+    width: 100%;
+    max-width: 32rem;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
+}
+
+.popup-fecha-hora {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.popup-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.popup-producto {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
 }
