@@ -150,13 +150,51 @@ export const pedidos = [
     {
         id: 3,
         proveedor: 'Alhambra',
-        fecha: '23/07/2026',
-        hora: '14:00',
+        fecha: '24/07/2026',
+        hora: '10:15',
         estado: 'Pendiente',
         productos: [
             { nombre: 'Alhambra Especial (tercios)', cantidad: 24 },
             { nombre: 'Alhambra Reserva 1925', cantidad: 12 },
             { nombre: 'Alhambra Sin Alcohol', cantidad: 12 }
+        ]
+    },
+    {
+        id: 4,
+        proveedor: 'Mahou San Miguel',
+        fecha: '24/07/2026',
+        hora: '12:30',
+        estado: 'Pendiente',
+        productos: [
+            { nombre: 'Mahou Tostada', cantidad: 7 },
+            { nombre: 'San Miguel S/G', cantidad: 7 },
+            { nombre: 'Agua con Gas', cantidad: 6 },
+            { nombre: 'Agua', cantidad: 8 }
+        ]
+    },
+    {
+        id: 5,
+        proveedor: 'Coca-Cola',
+        fecha: '25/07/2026',
+        hora: '09:45',
+        estado: 'Pendiente',
+        productos: [
+            { nombre: 'Coca-Cola', cantidad: 24 },
+            { nombre: 'Sprite', cantidad: 12 },
+            { nombre: 'Fanta Naranja', cantidad: 12 },
+            { nombre: 'Aquarius Limón', cantidad: 10 }
+        ]
+    },
+    {
+        id: 6,
+        proveedor: 'Matutano',
+        fecha: '25/07/2026',
+        hora: '11:00',
+        estado: 'Pendiente',
+        productos: [
+            { nombre: 'Doritos', cantidad: 15 },
+            { nombre: 'Lays', cantidad: 10 },
+            { nombre: 'Ruffles Jamón', cantidad: 8 }
         ]
     }
 ];
