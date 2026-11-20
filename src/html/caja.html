@@ -30,49 +30,18 @@
         <section class="form-card">
             <h2 id="fecha-caja-hoy">23/07/2026</h2>
             <form id="form-caja">
-                <input type="number" step="0.01" id="input-tarjeta" class="input-field" placeholder="Pago en tarjeta..."
+                <input type="number id="input-tarjeta" class="input-field" placeholder="Pago en tarjeta..."
                     required>
-                <input type="number" step="0.01" id="input-efectivo" class="input-field"
+                <input type="number" id="input-efectivo" class="input-field"
                     placeholder="Pago en efectivo..." required>
-                <input type="number" step="0.01" id="input-gastos" class="input-field" placeholder="Gastos menores..."
+                <input type="number" id="input-gastos" class="input-field" placeholder="Gastos menores..."
                     required>
                 <button type="submit" class="btn-primary">Continuar ▷</button>
             </form>
         </section>
-
         <h3 class="section-divider-title">Días anteriores</h3>
-
-        <section id="historial-caja">
-            <article class="form-card">
-                <h2>22/07/2026</h2>
-                <ul class="history-list">
-                    <li class="history-row">450,00 €</li>
-                    <li class="history-row">280,00 €</li>
-                    <li class="history-row">15,00 €</li>
-                    <li class="history-row total">715,00 €</li>
-                </ul>
-            </article>
-
-            <article class="form-card">
-                <h2>21/07/2026</h2>
-                <ul class="history-list">
-                    <li class="history-row">520,00 €</li>
-                    <li class="history-row">230,00 €</li>
-                    <li class="history-row">25,00 €</li>
-                    <li class="history-row total">725,00 €</li>
-                </ul>
-            </article>
-
-            <article class="form-card">
-                <h2>20/07/2026</h2>
-                <ul class="history-list">
-                    <li class="history-row">600,00 €</li>
-                    <li class="history-row">250,00 €</li>
-                    <li class="history-row">20,00 €</li>
-                    <li class="history-row total">830,00 €</li>
-                </ul>
-            </article>
-        </section>
+        <section id="historial-caja"></section>
     </main>
+    <script type="module" src="../js/main.js"></script>
 </body>
 </html>
