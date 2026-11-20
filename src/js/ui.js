@@ -1,4 +1,4 @@
-import { pedidos } from './datos.js';
+import { pedidos, accesosRapidos } from './datos.js';
 
 export const pintarProductosPorCategoria = (categorias, productos) => {
     const contenedor = document.querySelector('.main-content')
@@ -134,37 +134,62 @@ export const mostrarInfoPedido = (pedidoId) => {
 }
 
 export const mostrarPedidos = () => {
-    const contenedor = document.querySelector('#pedidos-hoy');
+    const contenedor = document.querySelector('#pedidos-hoy')
 
     pedidos.forEach((pedido) => {
-        const tarjeta = document.createElement('article');
+        const tarjeta = document.createElement('article')
         tarjeta.classList.add('order-card');
         tarjeta.dataset.id = pedido.id;
 
-        const titulo = document.createElement('h3');
+        const titulo = document.createElement('h3')
         titulo.textContent = pedido.proveedor;
         tarjeta.appendChild(titulo);
 
-        const hora = document.createElement('time');
+        const hora = document.createElement('time')
         hora.textContent = pedido.hora;
         tarjeta.appendChild(hora);
 
-        const estado = document.createElement('span');
+        const estado = document.createElement('span')
         estado.textContent = pedido.estado;
         if (pedido.estado === 'Entregado') {
-            estado.classList.add('status-delivered');
+            estado.classList.add('status-delivered')
         } else {
-            estado.classList.add('status-pending');
+            estado.classList.add('status-pending')
         }
         tarjeta.appendChild(estado);
-        contenedor.appendChild(tarjeta);
+        contenedor.appendChild(tarjeta)
+    });
+}
+
+export const mostrarAlertaStock = () => {
+    const seccion = document.querySelector('.quick-access-section')
+    accesosRapidos.forEach((acceso) => {
+        const tarjeta = document.createElement('article')
+        tarjeta.classList.add('alert-card');
+
+        const titulo = document.createElement('h3')
+        titulo.textContent = acceso.titulo;
+        tarjeta.appendChild(titulo);
+
+        const parrafo = document.createElement('p')
+        parrafo.textContent = acceso.textoAntes;
+
+        const cantidad = document.createElement('strong')
+        cantidad.id = 'low-stock-count';
+        cantidad.textContent = acceso.cantidad;
+        parrafo.appendChild(cantidad);
+
+        parrafo.append(acceso.textoDespues)
+        tarjeta.appendChild(parrafo)
+
+        seccion.appendChild(tarjeta)
     });
 }
 
 export const listenerPedido = () => {
-    const pedidos = document.querySelector('#pedidos-hoy');
+    const pedidos = document.querySelector('#pedidos-hoy')
     pedidos.addEventListener('click', e => {
-        const pedidoTitulo = e.target.closest('.order-card');
+        const pedidoTitulo = e.target.closest('.order-card')
         const pedidoId = pedidoTitulo.dataset.id;
         mostrarInfoPedido(pedidoId);
     });
