@@ -188,6 +188,27 @@ export const mostrarAlertaStock = () => {
     });
 }
 
+export const mostrarPedirPronto = (productos) => {
+    const lista = document.querySelector('#lista-pedir-pronto');
+    productos.forEach((producto) => {
+        if (producto.stock <= producto.stockMinimo) {
+            const productoLi = document.createElement('li');
+            productoLi.classList.add('product-item');
+
+            const nombreProducto = document.createElement('span');
+            nombreProducto.textContent = producto.nombre;
+            productoLi.appendChild(nombreProducto);
+
+            const stockProducto = document.createElement('span');
+            stockProducto.classList.add('product-badge');
+            stockProducto.textContent = producto.stock;
+            productoLi.appendChild(stockProducto);
+
+            lista.appendChild(productoLi);
+        }
+    });
+}
+
 export const listenerPedido = () => {
     const pedidos = document.querySelector('#pedidos-hoy')
     pedidos.addEventListener('click', e => {
