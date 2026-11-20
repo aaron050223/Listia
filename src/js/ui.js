@@ -1,4 +1,4 @@
-import { pedidos, accesosRapidos } from './datos.js';
+import { pedidos, accesosRapidos, productos } from './datos.js';
 
 export const pintarProductosPorCategoria = (categorias, productos) => {
     const contenedor = document.querySelector('.main-content')
@@ -207,6 +207,53 @@ export const mostrarPedirPronto = (productos) => {
             lista.appendChild(productoLi);
         }
     });
+}
+
+export const mostrarFechasPedidos = () => {
+    const listaAuxiliar = []
+    pedidos.forEach((pedido => {
+        if (!listaAuxiliar.includes(pedido.fecha)) {
+            listaAuxiliar.push(pedido.fecha)
+        }
+    }))
+    listaAuxiliar.forEach((fecha => {
+        const contenedor = document.querySelector('.main-content')
+        const seccion = document.createElement('section')
+        seccion.classList.add('section-card')
+        contenedor.appendChild(seccion)
+
+        const fechaTitulo = document.createElement('header')
+        fechaTitulo.classList.add('section-header')
+        seccion.appendChild(fechaTitulo)
+
+        const fechaTituloH2 = document.createElement('h2')
+        fechaTituloH2.textContent = fecha
+        fechaTitulo.appendChild(fechaTituloH2)
+
+        const productosLista = document.createElement('ul')
+        productosLista.classList.add('product-list')
+        seccion.appendChild(productosLista)
+
+        pedidos.forEach((pedido => {
+            if (pedido.fecha === fecha) {
+                pedido.productos.forEach((producto => {
+                    const contenedorProducto = document.createElement('li')
+                    contenedorProducto.classList.add('product-item')
+
+                    const nombreProducto = document.createElement('span')
+                    nombreProducto.textContent = producto.nombre
+                    contenedorProducto.appendChild(nombreProducto)
+
+                    const cantidadProducto = document.createElement('span')
+                    cantidadProducto.classList.add('product-badge')
+                    cantidadProducto.textContent = producto.cantidad
+                    contenedorProducto.appendChild(cantidadProducto)
+
+                    productosLista.appendChild(contenedorProducto)
+                }))
+            }
+        }))
+    }))
 }
 
 export const listenerPedido = () => {
