@@ -118,6 +118,13 @@ export const productos = [
         categoriaId: 3,
         stock: 5,
         stockMinimo: 2,
+    },
+    {
+        id: 17,
+        nombre: 'Mini Bollycao',
+        categoriaId: 3,
+        stock: 6,
+        stockMinimo: 2,
     }
 ];
 
