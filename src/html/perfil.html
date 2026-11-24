@@ -5,35 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de usuario - Gestión</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
 
-    <aside class="sidebar">
-        <img src="../../assets/logo.svg" alt="Logo" class="sidebar-logo">
-        <nav class="nav-menu">
-            <a href="index.html" class="nav-link">Menú Principal</a>
-            <a href="stock.html" class="nav-link">Stock</a>
-            <a href="pedidos.html" class="nav-link">Pedidos</a>
-            <a href="caja.html" class="nav-link">Caja</a>
-            <a href="perfil.html" class="nav-link active">Perfil de usuario</a>
+    <aside class="header-principal">
+        <img src="../../../assets/logo.svg" alt="Logo" class="header-logo">
+        <nav class="menu-nav">
+            <a href="index.html" class="menu-link">Menú Principal</a>
+            <a href="stock.html" class="menu-link">Stock</a>
+            <a href="pedidos.html" class="menu-link">Pedidos</a>
+            <a href="caja.html" class="menu-link">Caja</a>
+            <a href="perfil.html" class="menu-link activo">Perfil de usuario</a>
         </nav>
     </aside>
 
-    <main class="main-content">
-        <header class="page-header">
-            <h1>Perfil de usuario</h1>
-            <p class="date-info" id="fecha-jornada">Jornada de hoy • 23 de julio</p>
+    <main class="contenedor-principal">
+        <header class="cabecera-pagina">
+            <h1 class="cabecera-titulo">Perfil de usuario</h1>
+            <p class="cabecera-fecha" id="fecha-jornada">Jornada de hoy • 23 de julio</p>
         </header>
 
         <section class="form-card">
             <form id="form-perfil">
-                <input type="email" id="perfil-email" class="input-field" placeholder="Correo electrónico..." required>
-                <input type="password" id="perfil-pass" class="input-field" placeholder="Contraseña..." required>
-                <input type="text" id="perfil-nombre" class="input-field" placeholder="Nombre..." required>
-                <input type="tel" id="perfil-tel" class="input-field" placeholder="Teléfono (opcional)...">
-                <button type="submit" class="btn-primary">Continuar ▷</button>
+                <input type="email" id="input-email" class="campo-input" placeholder="Correo electrónico..." required>
+                <input type="password" id="input-password" class="campo-input" placeholder="Contraseña..." required>
+                <input type="text" id="input-nombre" class="campo-input" placeholder="Nombre..." required>
+                <input type="tel" id="input-telefono" class="campo-input" placeholder="Teléfono (opcional)...">
+                <button type="submit" class="boton-principal">Continuar ▷</button>
             </form>
         </section>
     </main>

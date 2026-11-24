@@ -1,16 +1,17 @@
 import { pedidos, accesosRapidos, historialCaja } from './datos.js';
 
 export const pintarProductosPorCategoria = (categorias, productos) => {
-    const contenedor = document.querySelector('.main-content')
+    const contenedor = document.querySelector('.contenedor-principal')
 
     categorias.forEach((categoria => {
         const seccion = document.createElement('section')
         const cabecera = document.createElement('header')
         const tituloCabecera = document.createElement('h2')
+        tituloCabecera.classList.add('tarjeta-titulo')
         const spanCabecera = document.createElement('span')
 
-        seccion.classList = 'section-card'
-        cabecera.classList = 'section-header'
+        seccion.classList = 'tarjeta'
+        cabecera.classList = 'tarjeta-header'
 
         tituloCabecera.textContent = categoria.nombre
         tituloCabecera.appendChild(spanCabecera)
@@ -18,7 +19,7 @@ export const pintarProductosPorCategoria = (categorias, productos) => {
         cabecera.appendChild(tituloCabecera)
 
         const lista = document.createElement('ul')
-        lista.classList = 'product-list'
+        lista.classList = 'lista-productos'
 
         let contadorProducto = 0
         productos.forEach((producto => {
@@ -66,10 +67,11 @@ export const mostrarInfoPedido = (pedidoId) => {
     contenedor.appendChild(carta)
 
     const cabecera = document.createElement('header')
-    cabecera.classList.add('section-header')
+    cabecera.classList.add('tarjeta-header')
     carta.appendChild(cabecera)
 
     const proveedor = document.createElement('h2')
+    proveedor.classList.add('tarjeta-titulo')
     proveedor.textContent = pedidoSeleccionado.proveedor
     proveedor.id = 'popup-proveedor'
     cabecera.appendChild(proveedor)
@@ -120,7 +122,7 @@ export const mostrarInfoPedido = (pedidoId) => {
 
     const botonCerrar = document.createElement('button')
     botonCerrar.type = 'button'
-    botonCerrar.classList.add('btn-primary')
+    botonCerrar.classList.add('boton-principal')
     botonCerrar.id = 'btn-cerrar-popup'
     botonCerrar.textContent = 'Cerrar'
     carta.appendChild(botonCerrar)
@@ -164,7 +166,7 @@ export const mostrarPedidos = () => {
 }
 
 export const mostrarAlertaStock = () => {
-    const seccion = document.querySelector('.quick-access-section')
+    const seccion = document.querySelector('#accesos-rapidos')
     accesosRapidos.forEach((acceso) => {
         const tarjeta = document.createElement('article')
         tarjeta.classList.add('alert-card');
@@ -189,7 +191,7 @@ export const mostrarAlertaStock = () => {
 }
 
 export const mostrarPedirPronto = (productos) => {
-    const lista = document.querySelector('#lista-pedir-pronto')
+    const lista = document.querySelector('#pedir-pronto .lista-productos')
     productos.forEach((producto) => {
         if (producto.stock <= producto.stockMinimo) {
             const productoLi = document.createElement('li')
@@ -217,21 +219,22 @@ export const mostrarFechasPedidos = () => {
         }
     }))
     listaAuxiliar.forEach((fecha => {
-        const contenedor = document.querySelector('.main-content')
+        const contenedor = document.querySelector('.contenedor-principal')
         const seccion = document.createElement('section')
-        seccion.classList.add('section-card')
+        seccion.classList.add('tarjeta')
         contenedor.appendChild(seccion)
 
         const fechaTitulo = document.createElement('header')
-        fechaTitulo.classList.add('section-header')
+        fechaTitulo.classList.add('tarjeta-header')
         seccion.appendChild(fechaTitulo)
 
         const fechaTituloH2 = document.createElement('h2')
+        fechaTituloH2.classList.add('tarjeta-titulo')
         fechaTituloH2.textContent = fecha
         fechaTitulo.appendChild(fechaTituloH2)
 
         const productosLista = document.createElement('ul')
-        productosLista.classList.add('product-list')
+        productosLista.classList.add('lista-productos')
         seccion.appendChild(productosLista)
 
         pedidos.forEach((pedido => {
@@ -257,7 +260,7 @@ export const mostrarFechasPedidos = () => {
 }
 
 export const mostrarCajaDiasAnteriores = () => {
-    const contenedor = document.querySelector('#historial-caja')
+    const contenedor = document.querySelector('#caja-historial')
     historialCaja.forEach((dia) => {
         const carta = document.createElement('article')
         carta.classList.add('form-card')
