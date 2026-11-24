@@ -1,0 +1,5 @@
+obtenerTodos(coleccion)
+obtenerPorId(coleccion, id)
+crear(coleccion, dato)
+actualizar(coleccion, id, dato)
+borrar(coleccion, id)
