@@ -1,3 +1,5 @@
+## Hito 1
+
 1. **Menú Principal (`index.html`)**
 * **Cabecera y resumen mensual:** Fecha de la jornada actual, ingresos acumulados del mes, comparativa porcentual respecto al mes anterior y progreso hacia el objetivo mensual.
 * **Panel:** Número de tickets emitidos, ticket medio, total de cobros en efectivo y total de cobros con tarjeta.
@@ -23,3 +25,16 @@
 5. **Perfil de usuario (`perfil.html`)**
 * **Cabecera:** Título de sección y fecha de la jornada.
 * **Formulario de datos personales:** Campos para gestionar el correo electronico, contraseña, nombre del usuario y teléfono de contacto (opcional).
+
+## Hito 2
+
+1. **Perfil de usuario (`perfil.html`)**
+* **Formulario de registro validado:** Campos para nombre de usuario, correo electrónico, contraseña (mínimo 8 caracteres, una mayúscula y un número), repetir contraseña, fecha de nacimiento (no futura y mayor de 18 años) y casilla de aceptación de condiciones.
+* **Validación y accesibilidad:** Comprobación en tiempo real (`blur` e `input`), atributos `aria-invalid` y `aria-describedby` en cada campo y envío automático del foco al primer campo con error al intentar guardar.
+* **Persistencia segura en `localStorage`:** Guardado de usuarios a través de `almacen.js` omitiendo la contraseña en claro y convirtiendo los datos a su tipo correspondiente.
+* **Vista «Usuarios registrados»:** Listado dinámico con delegación de eventos para editar (cargando los datos previos en el mismo formulario) y borrar usuarios previa confirmación (`confirm()`).
+
+2. **Contacto (`contacto.html`)**
+* **Navegación integrada:** Enlace a la nueva vista añadido en la barra lateral de toda la aplicación.
+* **Formulario de contacto con validación cruzada:** Campos para nombre, correo electrónico, teléfono (opcional, pero obligatorio si se marca la casilla *«Prefiero que me llaméis»*), selector de motivo adaptado a la tienda y área de texto para el mensaje con longitud mínima/máxima y contador de caracteres en tiempo real.
+* **Vista «Mensajes enviados»:** Guardado de mensajes en `localStorage` y renderizado dinámico en pantalla con botón para borrar cada mensaje previa confirmación.
