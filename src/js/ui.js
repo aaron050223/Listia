@@ -1,13 +1,6 @@
 import { pedidos, accesosRapidos, historialCaja } from './datos.js';
 import { obtenerTodos, obtenerPorId, crear, actualizar, borrar } from './almacen.js';
-import {
-    validarNombre,
-    validarCorreo,
-    validarContrasena,
-    validarConfirmarContrasena,
-    validarFecha,
-    validarTerminos
-} from './validacion.js';
+import { validarNombre, validarCorreo, validarContrasena, validarConfirmarContrasena, validarFecha, validarTerminos, validarTelefono, validarMotivo, validarMensaje } from './validacion.js';
 
 export const pintarProductosPorCategoria = (categorias, productos) => {
     const contenedor = document.querySelector('.contenedor-principal')
@@ -444,6 +437,117 @@ export const listenerPerfil = () => {
             if (confirm('¿Seguro que quieres borrar este usuario?')) {
                 borrar('usuarios', id)
                 mostrarUsuarios()
+            }
+        }
+    })
+}
+
+export const mostrarMensajes = () => {
+    const contenedor = document.querySelector('#lista-mensajes')
+    const mensajes = obtenerTodos('mensajes')
+
+    contenedor.replaceChildren()
+
+    if (mensajes.length === 0) {
+        const vacio = document.createElement('p')
+        vacio.textContent = 'No hay mensajes enviados todavía.'
+        contenedor.appendChild(vacio)
+    } else {
+        mensajes.forEach((mensaje) => {
+            const fila = document.createElement('article')
+            fila.classList.add('history-row')
+
+            const info = document.createElement('span')
+            const textoTelefono = mensaje.telefono ? ` • Tel: ${mensaje.telefono}` : ''
+            const textoLlamar = mensaje.llamar ? ' (Prefiere llamada)' : ''
+            info.textContent = `${mensaje.nombre} (${mensaje.email}${textoTelefono}${textoLlamar}) — [${mensaje.motivo}]: ${mensaje.mensaje}`
+
+            const botonBorrar = document.createElement('button')
+            botonBorrar.type = 'button'
+            botonBorrar.textContent = 'Borrar'
+            botonBorrar.dataset.id = mensaje.id
+            botonBorrar.classList.add('btn-borrar')
+
+            fila.appendChild(info)
+            fila.appendChild(botonBorrar)
+            contenedor.appendChild(fila)
+        })
+    }
+}
+
+export const listenerContacto = () => {
+    const form = document.querySelector('#form-contacto')
+    const listaMensajes = document.querySelector('#lista-mensajes')
+    const contador = document.querySelector('#contador-caracteres')
+
+    const inputNombre = document.querySelector('#input-nombre')
+    const inputEmail = document.querySelector('#input-email')
+    const inputTelefono = document.querySelector('#input-telefono')
+    const inputLlamar = document.querySelector('#input-llamar')
+    const inputMotivo = document.querySelector('#input-motivo')
+    const inputMensaje = document.querySelector('#input-mensaje')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        let hayErrores = false
+        let primerInputConError = null
+
+        const comprobarCampo = (input, mensajeError) => {
+            const cajaCampo = input.parentElement
+            const spanError = cajaCampo.querySelector('.campo-error')
+
+            const idError = `error-${input.id}`
+            spanError.id = idError
+            input.setAttribute('aria-describedby', idError)
+
+            if (mensajeError !== null) {
+                spanError.textContent = mensajeError
+                input.setAttribute('aria-invalid', 'true')
+                hayErrores = true
+
+                if (primerInputConError === null) {
+                    primerInputConError = input
+                }
+            } else {
+                spanError.textContent = ''
+                input.setAttribute('aria-invalid', 'false')
+            }
+        }
+
+        comprobarCampo(inputNombre, validarNombre(inputNombre.value))
+        comprobarCampo(inputEmail, validarCorreo(inputEmail.value))
+        comprobarCampo(inputTelefono, validarTelefono(inputTelefono.value, inputLlamar.checked))
+        comprobarCampo(inputMotivo, validarMotivo(inputMotivo.value))
+        comprobarCampo(inputMensaje, validarMensaje(inputMensaje.value, inputMensaje.minLength, inputMensaje.maxLength))
+
+        if (hayErrores === false) {
+            const datosMensaje = {
+                nombre: inputNombre.value.trim(),
+                email: inputEmail.value.trim(),
+                telefono: inputTelefono.value.trim(),
+                llamar: inputLlamar.checked,
+                motivo: inputMotivo.value,
+                mensaje: inputMensaje.value.trim()
+            }
+
+            crear('mensajes', datosMensaje)
+
+            form.reset()
+            contador.textContent = `0 / ${inputMensaje.maxLength} caracteres`
+            mostrarMensajes()
+        } else {
+            primerInputConError.focus()
+        }
+    })
+
+    listaMensajes.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-borrar')) {
+            const id = e.target.dataset.id
+
+            if (confirm('¿Seguro que quieres borrar este mensaje?')) {
+                borrar('mensajes', id)
+                mostrarMensajes()
             }
         }
     })
