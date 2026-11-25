@@ -20,7 +20,6 @@
             <a href="perfil.html" class="menu-link activo">Perfil de usuario</a>
         </nav>
     </aside>
-
     <main class="contenedor-principal">
         <header class="cabecera-pagina">
             <h1 class="cabecera-titulo">Perfil de usuario</h1>
@@ -28,20 +27,38 @@
         </header>
 
         <section class="form-card">
-            <form id="form-perfil">
-                <input type="text" id="input-nombre" class="campo-input" placeholder="Nombre..." required>
-                <input type="email" id="input-email" class="campo-input" placeholder="Correo electrónico..." required>
-                <input type="password" id="input-password" class="campo-input" placeholder="Contraseña..." required>
-                <input type="password" id="input-password-repeat" class="campo-input"
-                    placeholder="Repete la contrasñea..." required>
-                <input type="date" id="input-fecha" class="campo-input" placeholder="Fecha de nacimiento...">
-                <label>
-                    <input type="checkbox" name="terminos" required>
+            <form id="form-perfil" novalidate>
+                <div class="campo-grupo">
+                    <input type="text" id="input-nombre" class="campo-input" placeholder="Nombre..." required>
+                    <p class="campo-error"></p>
+                </div>
+                <div class="campo-grupo">
+                    <input type="email" id="input-email" class="campo-input" placeholder="Correo electrónico..." required>
+                    <p class="campo-error"></p>
+                </div>
+                <div class="campo-grupo">
+                    <input type="password" id="input-password" class="campo-input" placeholder="Contraseña..." required>
+                    <p class="campo-error"></p>
+                </div>
+                <div class="campo-grupo">
+                    <input type="password" id="input-password-repeat" class="campo-input" placeholder="Repite la contraseña..." required>
+                    <p class="campo-error"></p>
+                </div>
+                <div class="campo-grupo">
+                    <input type="date" id="input-fecha" class="campo-input" required>
+                    <p class="campo-error"></p>
+                </div>
+                <label class="campo-checkbox">
+                    <input type="checkbox" id="input-terminos" name="terminos" required>
                     He leído y acepto
+                    <p class="campo-error"></p>
                 </label>
                 <button type="submit" class="boton-principal">Continuar</button>
             </form>
         </section>
+
+        <h2 class="section-divider-title">Usuarios registrados</h2>
+        <section id="lista-usuarios" class="form-card"></section>
     </main>
     <script type="module" src="../js/main.js"></script>
 </body>
