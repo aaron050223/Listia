@@ -67,6 +67,45 @@ export const validarTerminos = (aceptado) => {
     }
     return null
 }
+export const validarTelefono = (telefono, esObligatorio = false) => {
+    const valorLimpio = telefono.trim()
+
+    if (valorLimpio === '') {
+        if (esObligatorio) {
+            return 'El teléfono es obligatorio si prefieres que te llamemos.'
+        }
+        return null
+    }
+
+    const regexTelefono = /^[6789]\d{8}$/
+    if (regexTelefono.test(valorLimpio) === false) {
+        return 'Introduce un teléfono válido (9 dígitos empezando por 6, 7, 8 o 9).'
+    }
+
+    return null
+}
+
+export const validarMotivo = (motivo) => {
+    if (!motivo || motivo === '') {
+        return 'Selecciona un motivo de contacto.'
+    }
+    return null
+}
+
+export const validarMensaje = (mensaje, minLongitud, maxLongitud) => {
+    const texto = mensaje.trim()
+
+    if (texto === '') {
+        return 'El mensaje es obligatorio.'
+    }
+    if (texto.length < minLongitud) {
+        return `El mensaje debe tener al menos ${minLongitud} caracteres.`
+    }
+    if (mensaje.length > maxLongitud) {
+        return `El mensaje no puede superar los ${maxLongitud} caracteres.`
+    }
+    return null
+}
 
 const mostrarErrores = (idInput, mensaje) => {
     const input = document.getElementById(idInput)
@@ -202,6 +241,70 @@ export const listenerTerminos = () => {
         if (tocado === true) {
             const error = validarTerminos(inputTerminos.checked)
             mostrarErrores('input-terminos', error)
+        }
+    })
+}
+
+export const listenerTelefono = () => {
+    const inputTelefono = document.querySelector('#input-telefono')
+    const inputLlamar = document.querySelector('#input-llamar')
+    let tocado = false
+
+    inputTelefono.addEventListener('blur', () => {
+        tocado = true
+        const error = validarTelefono(inputTelefono.value, inputLlamar.checked)
+        mostrarErrores('input-telefono', error)
+    })
+
+    inputTelefono.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarTelefono(inputTelefono.value, inputLlamar.checked)
+            mostrarErrores('input-telefono', error)
+        }
+    })
+
+    inputLlamar.addEventListener('change', () => {
+        tocado = true
+        const error = validarTelefono(inputTelefono.value, inputLlamar.checked)
+        mostrarErrores('input-telefono', error)
+    })
+}
+
+export const listenerMotivo = () => {
+    const inputMotivo = document.querySelector('#input-motivo')
+    let tocado = false
+
+    inputMotivo.addEventListener('blur', () => {
+        tocado = true
+        const error = validarMotivo(inputMotivo.value)
+        mostrarErrores('input-motivo', error)
+    })
+
+    inputMotivo.addEventListener('change', () => {
+        if (tocado === true) {
+            const error = validarMotivo(inputMotivo.value)
+            mostrarErrores('input-motivo', error)
+        }
+    })
+}
+
+export const listenerMensaje = () => {
+    const inputMensaje = document.querySelector('#input-mensaje')
+    const contador = document.querySelector('#contador-caracteres')
+    let tocado = false
+
+    inputMensaje.addEventListener('blur', () => {
+        tocado = true
+        const error = validarMensaje(inputMensaje.value, inputMensaje.minLength, inputMensaje.maxLength)
+        mostrarErrores('input-mensaje', error)
+    })
+
+    inputMensaje.addEventListener('input', () => {
+        contador.textContent = `${inputMensaje.value.length} / ${inputMensaje.maxLength} caracteres`
+
+        if (tocado === true) {
+            const error = validarMensaje(inputMensaje.value, inputMensaje.minLength, inputMensaje.maxLength)
+            mostrarErrores('input-mensaje', error)
         }
     })
 }
