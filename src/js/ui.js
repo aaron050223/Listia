@@ -370,22 +370,33 @@ export const listenerPerfil = () => {
         e.preventDefault()
 
         let hayErrores = false
+        let primerInputConError = null
 
         const comprobarCampo = (input, mensajeError) => {
             const cajaCampo = input.parentElement
             const parrafoError = cajaCampo.querySelector('.campo-error')
 
+            const idError = `error-${input.id}`
+            parrafoError.id = idError
+            input.setAttribute('aria-describedby', idError)
+
             if (mensajeError !== null) {
                 parrafoError.textContent = mensajeError
+                input.setAttribute('aria-invalid', 'true')
                 hayErrores = true
+
+                if (primerInputConError === null) {
+                    primerInputConError = input
+                }
             } else {
                 parrafoError.textContent = ''
+                input.setAttribute('aria-invalid', 'false')
             }
         }
 
         comprobarCampo(inputNombre, validarNombre(inputNombre.value))
         comprobarCampo(inputEmail, validarCorreo(inputEmail.value))
-        comprobarCampo(inputPassword, validarContrasena(inputPassword.value))
+        comprobarCampo(inputPassword, validarContrasena(inputPassword.value, inputPassword.minLength))
         comprobarCampo(inputPasswordRepetida, validarConfirmarContrasena(inputPassword.value, inputPasswordRepetida.value))
         comprobarCampo(inputFecha, validarFecha(inputFecha.value))
         comprobarCampo(inputTerminos, validarTerminos(inputTerminos.checked))
@@ -408,6 +419,8 @@ export const listenerPerfil = () => {
 
             form.reset()
             mostrarUsuarios()
+        } else {
+            primerInputConError.focus()
         }
     })
 

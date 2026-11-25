@@ -13,11 +13,11 @@ export const validarCorreo = (correo) => {
     return null
 }
 
-export const validarContrasena = (password) => {
+export const validarContrasena = (password, minLongitud) => {
     const errores = []
 
-    if (password.length < 8) {
-        errores.push('• Debe tener al menos 8 caracteres.')
+    if (password.length < minLongitud) {
+        errores.push(`• Debe tener al menos ${minLongitud} caracteres.`)
     }
     if (!/[A-Z]/.test(password)) {
         errores.push('• Debe incluir al menos una mayúscula.')
@@ -73,7 +73,17 @@ const mostrarErrores = (idInput, mensaje) => {
     const contenedor = input.closest('.campo-grupo, .campo-checkbox')
     const elementoError = contenedor.querySelector('.campo-error')
 
-    elementoError.textContent = mensaje || ''
+    const idError = `error-${idInput}`
+    elementoError.id = idError
+    input.setAttribute('aria-describedby', idError)
+
+    if (mensaje !== null) {
+        elementoError.textContent = mensaje
+        input.setAttribute('aria-invalid', 'true')
+    } else {
+        elementoError.textContent = ''
+        input.setAttribute('aria-invalid', 'false')
+    }
 }
 
 export const listenerNombre = () => {
@@ -119,7 +129,7 @@ export const listenerContrasena = () => {
 
     inputPassword.addEventListener('blur', () => {
         tocado = true
-        const error = validarContrasena(inputPassword.value)
+        const error = validarContrasena(inputPassword.value, inputPassword.minLength)
         mostrarErrores('input-password', error)
 
         if (inputPasswordRepeat.value !== '') {
@@ -130,7 +140,7 @@ export const listenerContrasena = () => {
 
     inputPassword.addEventListener('input', () => {
         if (tocado === true) {
-            const error = validarContrasena(inputPassword.value)
+            const error = validarContrasena(inputPassword.value, inputPassword.minLength)
             mostrarErrores('input-password', error)
 
             if (inputPasswordRepeat.value !== '') {
