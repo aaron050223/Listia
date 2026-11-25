@@ -78,31 +78,65 @@ const mostrarErrores = (idInput, mensaje) => {
 
 export const listenerNombre = () => {
     const inputNombre = document.querySelector('#input-nombre')
-    inputNombre.addEventListener('change', (e) => {
-        const errores = validarNombre(e.target.value)
-        mostrarErrores(e.target.id, errores)
+    let tocado = false
+
+    inputNombre.addEventListener('blur', () => {
+        tocado = true
+        const error = validarNombre(inputNombre.value)
+        mostrarErrores('input-nombre', error)
+    })
+
+    inputNombre.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarNombre(inputNombre.value)
+            mostrarErrores('input-nombre', error)
+        }
     })
 }
 
 export const listenerCorreo = () => {
     const inputEmail = document.querySelector('#input-email')
-    inputEmail.addEventListener('change', (e) => {
-        const errores = validarCorreo(e.target.value)
-        mostrarErrores(e.target.id, errores)
+    let tocado = false
+
+    inputEmail.addEventListener('blur', () => {
+        tocado = true
+        const error = validarCorreo(inputEmail.value)
+        mostrarErrores('input-email', error)
+    })
+
+    inputEmail.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarCorreo(inputEmail.value)
+            mostrarErrores('input-email', error)
+        }
     })
 }
 
 export const listenerContrasena = () => {
     const inputPassword = document.querySelector('#input-password')
     const inputPasswordRepeat = document.querySelector('#input-password-repeat')
+    let tocado = false
 
-    inputPassword.addEventListener('change', (e) => {
-        const errores = validarContrasena(e.target.value)
-        mostrarErrores(e.target.id, errores)
+    inputPassword.addEventListener('blur', () => {
+        tocado = true
+        const error = validarContrasena(inputPassword.value)
+        mostrarErrores('input-password', error)
 
         if (inputPasswordRepeat.value !== '') {
-            const errorRepetida = validarConfirmarContrasena(e.target.value, inputPasswordRepeat.value)
-            mostrarErrores(inputPasswordRepeat.id, errorRepetida)
+            const errorRepetida = validarConfirmarContrasena(inputPassword.value, inputPasswordRepeat.value)
+            mostrarErrores('input-password-repeat', errorRepetida)
+        }
+    })
+
+    inputPassword.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarContrasena(inputPassword.value)
+            mostrarErrores('input-password', error)
+
+            if (inputPasswordRepeat.value !== '') {
+                const errorRepetida = validarConfirmarContrasena(inputPassword.value, inputPasswordRepeat.value)
+                mostrarErrores('input-password-repeat', errorRepetida)
+            }
         }
     })
 }
@@ -110,25 +144,54 @@ export const listenerContrasena = () => {
 export const listenerConfirmarContrasena = () => {
     const inputPassword = document.querySelector('#input-password')
     const inputPasswordRepeat = document.querySelector('#input-password-repeat')
+    let tocado = false
 
-    inputPasswordRepeat.addEventListener('change', (e) => {
-        const errores = validarConfirmarContrasena(inputPassword.value, e.target.value)
-        mostrarErrores(e.target.id, errores)
+    inputPasswordRepeat.addEventListener('blur', () => {
+        tocado = true
+        const error = validarConfirmarContrasena(inputPassword.value, inputPasswordRepeat.value)
+        mostrarErrores('input-password-repeat', error)
+    })
+
+    inputPasswordRepeat.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarConfirmarContrasena(inputPassword.value, inputPasswordRepeat.value)
+            mostrarErrores('input-password-repeat', error)
+        }
     })
 }
 
 export const listenerFecha = () => {
     const inputFecha = document.querySelector('#input-fecha')
-    inputFecha.addEventListener('change', (e) => {
-        const errores = validarFecha(e.target.value)
-        mostrarErrores(e.target.id, errores)
+    let tocado = false
+
+    inputFecha.addEventListener('blur', () => {
+        tocado = true
+        const error = validarFecha(inputFecha.value)
+        mostrarErrores('input-fecha', error)
+    })
+
+    inputFecha.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarFecha(inputFecha.value)
+            mostrarErrores('input-fecha', error)
+        }
     })
 }
 
 export const listenerTerminos = () => {
     const inputTerminos = document.querySelector('#input-terminos')
-    inputTerminos.addEventListener('change', (e) => {
-        const errores = validarTerminos(e.target.checked)
-        mostrarErrores(e.target.id, errores)
+    let tocado = false
+
+    inputTerminos.addEventListener('blur', () => {
+        tocado = true
+        const error = validarTerminos(inputTerminos.checked)
+        mostrarErrores('input-terminos', error)
+    })
+
+    inputTerminos.addEventListener('input', () => {
+        if (tocado === true) {
+            const error = validarTerminos(inputTerminos.checked)
+            mostrarErrores('input-terminos', error)
+        }
     })
 }

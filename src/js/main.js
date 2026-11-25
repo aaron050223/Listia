@@ -1,5 +1,5 @@
 import { categorias, productos } from './datos.js';
-import { pintarProductosPorCategoria, mostrarPedidos, mostrarAlertaStock, listenerPedido, mostrarPedirPronto, mostrarFechasPedidos, mostrarCajaDiasAnteriores } from './ui.js';
+import { pintarProductosPorCategoria, mostrarPedidos, mostrarAlertaStock, listenerPedido, mostrarPedirPronto, mostrarFechasPedidos, mostrarCajaDiasAnteriores, mostrarUsuarios, listenerPerfil } from './ui.js';
 import { listenerNombre, listenerCorreo, listenerContrasena, listenerConfirmarContrasena, listenerFecha, listenerTerminos } from './validacion.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,5 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listenerConfirmarContrasena()
         listenerFecha()
         listenerTerminos()
+        mostrarUsuarios()
+        listenerPerfil()
     }
 })

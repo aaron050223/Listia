@@ -1,4 +1,13 @@
 import { pedidos, accesosRapidos, historialCaja } from './datos.js';
+import { obtenerTodos, obtenerPorId, crear, actualizar, borrar } from './almacen.js';
+import {
+    validarNombre,
+    validarCorreo,
+    validarContrasena,
+    validarConfirmarContrasena,
+    validarFecha,
+    validarTerminos
+} from './validacion.js';
 
 export const pintarProductosPorCategoria = (categorias, productos) => {
     const contenedor = document.querySelector('.contenedor-principal')
@@ -298,5 +307,131 @@ export const listenerPedido = () => {
         const pedidoTitulo = e.target.closest('.order-card')
         const pedidoId = pedidoTitulo.dataset.id;
         mostrarInfoPedido(pedidoId);
+    })
+}
+
+export const mostrarUsuarios = () => {
+    const contenedor = document.querySelector('#lista-usuarios')
+    const usuarios = obtenerTodos('usuarios')
+
+    contenedor.replaceChildren()
+
+    if (usuarios.length === 0) {
+        const vacio = document.createElement('p')
+        vacio.textContent = 'No hay usuarios registrados todavía.'
+        contenedor.appendChild(vacio)
+    } else {
+        usuarios.forEach((usuario) => {
+            const fila = document.createElement('article')
+            fila.classList.add('history-row')
+
+            const info = document.createElement('span')
+            info.textContent = `${usuario.nombre} (${usuario.email}) • Nac: ${usuario.fechaNacimiento}`
+
+            const botones = document.createElement('div')
+            botones.classList.add('usuario-acciones')
+
+            const botonEditar = document.createElement('button')
+            botonEditar.type = 'button'
+            botonEditar.textContent = 'Editar'
+            botonEditar.dataset.id = usuario.id
+            botonEditar.classList.add('btn-editar')
+
+            const botonBorrar = document.createElement('button')
+            botonBorrar.type = 'button'
+            botonBorrar.textContent = 'Borrar'
+            botonBorrar.dataset.id = usuario.id
+            botonBorrar.classList.add('btn-borrar')
+
+            botones.appendChild(botonEditar)
+            botones.appendChild(botonBorrar)
+            fila.appendChild(info)
+            fila.appendChild(botones)
+            contenedor.appendChild(fila)
+        })
+    }
+}
+
+export const listenerPerfil = () => {
+    const form = document.querySelector('#form-perfil')
+    const listaUsuarios = document.querySelector('#lista-usuarios')
+    const botonSubmit = form.querySelector('button[type="submit"]')
+
+    const inputNombre = document.querySelector('#input-nombre')
+    const inputEmail = document.querySelector('#input-email')
+    const inputPassword = document.querySelector('#input-password')
+    const inputPasswordRepetida = document.querySelector('#input-password-repeat')
+    const inputFecha = document.querySelector('#input-fecha')
+    const inputTerminos = document.querySelector('#input-terminos')
+
+    let idEditando = null
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+
+        let hayErrores = false
+
+        const comprobarCampo = (input, mensajeError) => {
+            const cajaCampo = input.parentElement
+            const parrafoError = cajaCampo.querySelector('.campo-error')
+
+            if (mensajeError !== null) {
+                parrafoError.textContent = mensajeError
+                hayErrores = true
+            } else {
+                parrafoError.textContent = ''
+            }
+        }
+
+        comprobarCampo(inputNombre, validarNombre(inputNombre.value))
+        comprobarCampo(inputEmail, validarCorreo(inputEmail.value))
+        comprobarCampo(inputPassword, validarContrasena(inputPassword.value))
+        comprobarCampo(inputPasswordRepetida, validarConfirmarContrasena(inputPassword.value, inputPasswordRepetida.value))
+        comprobarCampo(inputFecha, validarFecha(inputFecha.value))
+        comprobarCampo(inputTerminos, validarTerminos(inputTerminos.checked))
+
+        if (hayErrores === false) {
+            const datosUsuario = {
+                nombre: inputNombre.value.trim(),
+                email: inputEmail.value.trim(),
+                fechaNacimiento: inputFecha.value,
+                terminos: inputTerminos.checked
+            }
+
+            if (idEditando !== null) {
+                actualizar('usuarios', idEditando, datosUsuario)
+                idEditando = null
+                botonSubmit.textContent = 'Continuar'
+            } else {
+                crear('usuarios', datosUsuario)
+            }
+
+            form.reset()
+            mostrarUsuarios()
+        }
+    })
+
+    listaUsuarios.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-editar')) {
+            const id = e.target.dataset.id
+            const usuario = obtenerPorId('usuarios', id)
+
+            if (usuario !== null) {
+                inputNombre.value = usuario.nombre
+                inputEmail.value = usuario.email
+                inputFecha.value = usuario.fechaNacimiento
+                inputTerminos.checked = usuario.terminos
+
+                idEditando = usuario.id
+                botonSubmit.textContent = 'Guardar cambios'
+            }
+        } else if (e.target.classList.contains('btn-borrar')) {
+            const id = e.target.dataset.id
+
+            if (confirm('¿Seguro que quieres borrar este usuario?')) {
+                borrar('usuarios', id)
+                mostrarUsuarios()
+            }
+        }
     })
 }
